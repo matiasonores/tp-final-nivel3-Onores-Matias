@@ -11,7 +11,7 @@ namespace TPFinalNivel3OnoresMatias
 {
 
 
-    public partial class Contact
+    public partial class ArticulosABM
     {
     }
 }

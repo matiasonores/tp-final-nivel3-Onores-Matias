@@ -12,7 +12,28 @@ namespace Negocio
     {
         private AccesoDB _db;
 
-        public List<Categoria> ObtenerMarcas()
+        public int AgregarCategoria(string categoria)
+        {
+            int id;
+            try
+            {
+                _db = new AccesoDB();
+                _db.SetProcedure("AgregarCategoria");
+                _db.SetParameter("@descripcion", categoria);
+                id = _db.EjecutarScalar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
+            }
+            return id;
+        }
+
+        public List<Categoria> ObtenerCategorias()
         {
             List<Categoria> categorias = new List<Categoria>();
             try

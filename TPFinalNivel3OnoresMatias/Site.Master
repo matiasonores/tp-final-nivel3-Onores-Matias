@@ -12,9 +12,9 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    
     <asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body>
@@ -46,23 +46,34 @@
                 </button>
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Articulos">Articulos</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/ArticulosFavoritos">Favoritos</a></li>
+                        <li class="nav-item"><a class="nav-link " runat="server" href="~/">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link " runat="server" href="~/Articulos">Articulos</a></li>
+                        <li class="nav-item"><a class="nav-link " runat="server" href="~/MarcasABM">Marcas y Categorias</a></li>
+                        <li class="nav-item"><a class="nav-link " runat="server" href="~/ArticulosFavoritos">Favoritos</a></li>
                     </ul>
                 </div>
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-right">
+                <div class="collapse navbar-collapse d-sm-inline-flex pull-right">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Login">Log In</a></li>
+                        <%if (isLoggedIn)
+                          {
+                        %>
+                        <li class="nav-item ms-auto"><a class="nav-link" runat="server" href="~/ArticulosFavoritos">Log out</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/MiPerfil">Mi perfil</a></li>
+                        <%}
+                        else
+                        {%>
+                        <li class="nav-item ms-auto"><a class="nav-link" runat="server" href="~/Login">Log In</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Signin">Sign In</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/ArticulosFavoritos">Log out</a></li>
+                        <%} %>
                     </ul>
                 </div>
             </div>
         </nav>
         <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
-            <hr/>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                
+            </asp:ContentPlaceHolder>
+            <hr />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
             </footer>

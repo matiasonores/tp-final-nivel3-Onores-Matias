@@ -9,9 +9,10 @@ namespace TPFinalNivel3OnoresMatias
 {
     public partial class SiteMaster : MasterPage
     {
+        public bool isLoggedIn { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            isLoggedIn = Session["User"] != null ? true : false;
         }
     }
 }

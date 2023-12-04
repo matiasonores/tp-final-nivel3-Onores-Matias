@@ -59,24 +59,110 @@ namespace Negocio
             return articulo;
         }
 
-        public bool AgregarArticulo(Articulo articulo)
+        public int AgregarArticulo(Articulo articulo)
         {
-            return true;
+            int id;
+            try
+            {
+                _db = new AccesoDB();
+                _db.SetProcedure("AgregarArticulo");
+                _db.SetParameter("@codigo", articulo.Codigo);
+                _db.SetParameter("@nombre", articulo.Nombre);
+                _db.SetParameter("@descripcion", articulo.Descripcion);
+                _db.SetParameter("@precio", articulo.Precio);
+                _db.SetParameter("@imagen", articulo.Imagen);
+                _db.SetParameter("@marca", articulo.Marca.Id);
+                _db.SetParameter("@categoria", articulo.Categoria.Id);
+                
+                id = _db.EjecutarScalar();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
+            }
+            return id;
         }
 
         public bool ModificarArticulo(Articulo articulo)
         {
-            return true;
+            bool modificado = false;
+            try
+            {
+                _db = new AccesoDB();
+                _db.SetProcedure("ModificarArticulo");
+                _db.SetParameter("@id", articulo.Id);
+                _db.SetParameter("@codigo", articulo.Codigo);
+                _db.SetParameter("@nombre", articulo.Nombre);
+                _db.SetParameter("@descripcion", articulo.Descripcion);
+                _db.SetParameter("@precio", articulo.Precio);
+                _db.SetParameter("@imagen", articulo.Imagen);
+                _db.SetParameter("@marca", articulo.Marca.Id);
+                _db.SetParameter("@categoria", articulo.Categoria.Id);
+                _db.EjecutarAccion();
+                modificado = true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
+            }
+            return modificado;
         }
 
         public bool BorrarArticulo(int id)
         {
-            return true;
+            bool eliminado = false;
+            try
+            {
+                _db = new AccesoDB();
+                _db.SetProcedure("BorrarArticulo");
+                _db.SetParameter("@id", id);
+                _db.EjecutarAccion();
+                eliminado = true;
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
+            }
+
+            return eliminado;
         }
 
         public Articulo ObtenerArticulo(int id)
         {
-            return null;
+            Articulo articulo = new Articulo();
+            try
+            {
+                _db = new AccesoDB();
+                _db.SetProcedure("ObtenerArticulo");
+                _db.SetParameter("@id", id);
+                
+                _db.EjecutarLectura();
+
+                while (_db.Lector.Read())
+                {
+                    articulo = CrearArticulo(_db.Lector);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return articulo;
         }
 
         public object ObtenerArticulosFiltro(string campo, string criterio, string filtro)

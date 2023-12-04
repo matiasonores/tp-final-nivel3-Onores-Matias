@@ -24,7 +24,7 @@
                     <div class="col-4">
                         <div class="mb-3">
                             <asp:Label Text="Campo" ID="lblCampo" runat="server" />
-                            <asp:DropDownList runat="server" AutoPostBack="true" CssClass="form-control" ID="ddlCampo" OnSelectedIndexChanged="ddlCampo_SelectedIndexChanged">
+                            <asp:DropDownList runat="server" AutoPostBack="true" CssClass="form-select" ID="ddlCampo" OnSelectedIndexChanged="ddlCampo_SelectedIndexChanged">
                                 <asp:ListItem Text="Código"/>
                                 <asp:ListItem Text="Nombre"/>
                                 <asp:ListItem Text="Precio"/>
@@ -34,7 +34,7 @@
                     <div class="col-4">
                         <div class="mb-3">
                             <asp:Label Text="Criterio" runat="server" />
-                            <asp:DropDownList runat="server" ID="ddlCriterio" CssClass="form-control"></asp:DropDownList>
+                            <asp:DropDownList runat="server" ID="ddlCriterio" CssClass="form-select"></asp:DropDownList>
                         </div>
                     </div>
                     <div class="col-4">
@@ -54,7 +54,7 @@
                 </div>
                 <%} %>
             </div>
-            <asp:GridView ID="dgvArticulos" DataKeyNames="Id" runat="server" CssClass="table" AutoGenerateColumns="false" AllowPaging="true" PageSize="5" OnSelectedIndexChanged="dgvArticulos_SelectedIndexChanged">
+            <asp:GridView ID="dgvArticulos" DataKeyNames="Id" runat="server" CssClass="table" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" OnSelectedIndexChanged="dgvArticulos_SelectedIndexChanged">
                 <Columns>
                     <asp:BoundField HeaderText="Código" DataField="Codigo" />
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre" />

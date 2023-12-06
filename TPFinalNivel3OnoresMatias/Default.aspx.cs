@@ -44,5 +44,10 @@ namespace TPFinalNivel3OnoresMatias
         {
 
         }
+
+        protected void btnFavorito_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

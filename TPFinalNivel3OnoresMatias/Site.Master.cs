@@ -14,5 +14,60 @@ namespace TPFinalNivel3OnoresMatias
         {
             isLoggedIn = Session["User"] != null ? true : false;
         }
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Redirect("Login.aspx");
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        
+
+        protected void btnSigin_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Redirect("Signin.aspx");
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Redirect("Default.aspx", false);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        protected void btnPerfil_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Redirect("Perfil.aspx", false);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        
     }
 }

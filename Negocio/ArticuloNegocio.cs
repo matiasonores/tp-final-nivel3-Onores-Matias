@@ -188,5 +188,76 @@ namespace Negocio
             }
             return articulos;
         }
+
+        public List<Articulo> ObtenerArticulosFavoritos(int userID)
+        {
+            List<Articulo> articulosFavoritos = new List<Articulo>();
+            try
+            {
+                _db = new AccesoDB();
+                _db.SetProcedure("ObtenerArticulosFavoritos");
+                _db.SetParameter("@id", userID);
+                _db.EjecutarLectura();
+                while (_db.Lector.Read())
+                {
+                    Articulo articulo = CrearArticulo(_db.Lector);
+                    articulosFavoritos.Add(articulo);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return articulosFavoritos;
+        }
+
+        public int AgregarFavorito(int userID, int articuloID)
+        {
+            int id;
+            try
+            {
+                _db = new AccesoDB();
+                _db.SetProcedure("AgregarFavorito");
+                _db.SetParameter("@id", userID);
+                _db.SetParameter("@idArticulo", articuloID);
+
+                id = _db.EjecutarScalar();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
+            }
+            return id;
+        }
+
+        public bool BorrarFavorito(int userID, int articuloID)
+        {
+            bool eliminado = false;
+            try
+            {
+                _db = new AccesoDB();
+                _db.SetProcedure("BorrarFavorito");
+                _db.SetParameter("@id", userID);
+                _db.SetParameter("@idArticulo", articuloID);
+                _db.EjecutarAccion();
+                eliminado = true;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
+            }
+
+            return eliminado;
+        }
     }
 }

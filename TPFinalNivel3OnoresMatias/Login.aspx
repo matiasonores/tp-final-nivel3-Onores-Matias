@@ -24,17 +24,13 @@
                                     <label for="exampleInputPassword1" class="form-label">Password</label>
                                     <input type="password" class="form-control" id="exampleInputPassword1">
                                 </div>
-                                <div class="mb-3 form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                <div class="mb-3">
+                                    <asp:Button runat="server" ID="btnLogin" class="btn btn-success" Text="Log In"/>
+                                    <asp:LinkButton href="Sigin.aspx" runat="server" ID="btnSignin" type="submit" class="btn btn-primary">Sign In</asp:LinkButton>
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-success">Log In</button>
-                                    <button type="submit" class="btn btn-primary">Sign In</button>
-                                </div>
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-info">Log as Admin</button>
-                                    <button type="submit" class="btn btn-warning">Log as User</button>
+                                    <asp:Button ID="btnAdmin" CssClass="btn btn-info" runat="server" Text="Log as Admin" />
+                                    <asp:Button ID="btnUser" CssClass="btn btn-warning" runat="server" Text="Log as User" />
                                 </div>
                             </form>
                         </div>

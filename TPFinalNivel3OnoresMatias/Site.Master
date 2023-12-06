@@ -68,8 +68,8 @@
                             {%>
                         <%--<li class="nav-item ms-auto"><a class="nav-link" runat="server" href="~/Login">Log In</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Signin">Sign In</a></li>--%>
-                        <li class="nav-item ms-auto"> <asp:LinkButton ID="btnLogin" AutoPostBack="false" CssClass="nav-link" OnClick="btnLogin_Click" runat="server">Log in</asp:LinkButton></li>
-                        <li class="nav-item"> <asp:LinkButton ID="btnSigin" AutoPostBack="false" CssClass="nav-link" OnClick="btnSigin_Click" runat="server">Sign in</asp:LinkButton></li>
+                        <li class="nav-item ms-auto"> <asp:LinkButton ID="btnLogin" AutoPostBack="false" CssClass="nav-link" href="Login.aspx" runat="server">Log in</asp:LinkButton></li>
+                        <li class="nav-item"> <asp:LinkButton ID="btnSigin" AutoPostBack="false" CssClass="nav-link" href="Signin.aspx" runat="server">Sign in</asp:LinkButton></li>
                         <%} %>
                     </ul>
                 </div>

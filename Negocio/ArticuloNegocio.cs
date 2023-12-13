@@ -210,6 +210,27 @@ namespace Negocio
             }
             return articulosFavoritos;
         }
+        public Articulo ObtenerArticuloFavorito(int userID, int articuloID)
+        {
+            Articulo articulo = null;
+            try
+            {
+                _db = new AccesoDB();
+                _db.SetProcedure("ObtenerArticuloFavorito");
+                _db.SetParameter("@id", userID);
+                _db.SetParameter("@idArticulo", articuloID);
+                _db.EjecutarLectura();
+                while (_db.Lector.Read())
+                {
+                    articulo = CrearArticulo(_db.Lector);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return articulo;
+        }
 
         public int AgregarFavorito(int userID, int articuloID)
         {

@@ -61,9 +61,9 @@
                                 <div class="card-body">
                                     <h5 class="card-title"><%#Eval("Nombre")%></h5>
                                     <%--<p class="card-text"><%#Eval("Descripcion") %></p>--%>
-                                    <p class="card-text text-warning"><i class="bi bi-coin"></i><%#Eval("Precio") %></p>
+                                    <p class="card-text text-warning"><%#Eval("Precio","{0:c}") %></p>
 
-                                    <asp:LinkButton Text="Ver" CssClass="btn btn-outline-info" runat="server" ID="btnEjemplo" CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloId" OnClick="btnEjemplo_Click"><i class="bi bi-eye"></i></asp:LinkButton>
+                                    <asp:LinkButton CssClass="btn btn-outline-info" runat="server" ID="btnDetalles" CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloId" OnClick="btnDetalles_Click"><i class="bi bi-eye"></i></asp:LinkButton>
                                     <asp:LinkButton CssClass="btn btn-outline-success" runat="server" ID="btnFavorito" CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloId" OnClick="btnFavorito_Click"><i class="bi bi-star"></i></asp:LinkButton>
                                 </div>
                             </div>

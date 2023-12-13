@@ -16,6 +16,7 @@ namespace Negocio
             int id = -1;
             try
             {
+                _db = new AccesoDB();
                 _db.SetProcedure("AgregarUsuario");
                 _db.SetParameter("@email", usuario.Email);
                 _db.SetParameter("@pass", usuario.Password);
@@ -36,23 +37,31 @@ namespace Negocio
 
                 throw ex;
             }
+            finally
+            {
+                _db.CerrarConexion();
+            }
 
             return id;
         }
 
         public Usuario ObtenerUsuario(string username,  string password)
         {
-            Usuario usuario = new Usuario();
+            Usuario usuario = null;
             try
             {
+                _db = new AccesoDB();
                 _db.SetProcedure("ObtenerUsuario");
-                _db.SetParameter("@username", username);
+                _db.SetParameter("@email", username);
                 _db.SetParameter("@password", password);
                 _db.EjecutarLectura();
 
                 if (_db.Lector.Read())
                 {
+                    usuario = new Usuario();
                     usuario.Id = Convert.ToInt32(_db.Lector["Id"]);
+                    usuario.Email = username;
+                    usuario.Password = password;
                     usuario.Admin = Convert.ToBoolean(_db.Lector["admin"]);
 
                     if (!(_db.Lector["ImagenPerfil"] is DBNull))
@@ -68,7 +77,11 @@ namespace Negocio
 
                 throw ex;
             }
-            
+            finally
+            {
+                _db.CerrarConexion();
+            }
+
             return usuario;
         }
 
@@ -77,6 +90,7 @@ namespace Negocio
             bool existe = false;
             try
             {
+                _db = new AccesoDB();
                 _db.SetProcedure("ValidarEmail");
                 _db.SetParameter("@email", email);
                 _db.EjecutarLectura();
@@ -90,6 +104,10 @@ namespace Negocio
             {
                 throw ex;
             }
+            finally
+            {
+                _db.CerrarConexion();
+            }
 
             return existe;
         }
@@ -99,6 +117,7 @@ namespace Negocio
             bool modificado = false;
             try
             {
+                _db = new AccesoDB();
                 _db.SetProcedure("ModificarUsuario");
                 _db.SetParameter("@id", usuario.Id);
                 _db.SetParameter("@email", usuario.Email);
@@ -116,6 +135,10 @@ namespace Negocio
             {
 
                 throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
             }
 
             return modificado;

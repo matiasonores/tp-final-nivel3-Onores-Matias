@@ -14,7 +14,7 @@
                         <div class="card-body">
                             <h5 class="card-title">¡Bienvenido!</h5>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <form>
+                            
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Email address</label>
                                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -29,10 +29,10 @@
                                     <asp:LinkButton href="Sigin.aspx" runat="server" ID="btnSignin" type="submit" class="btn btn-primary">Sign In</asp:LinkButton>
                                 </div>
                                 <div class="mb-3">
-                                    <asp:Button ID="btnAdmin" CssClass="btn btn-info" runat="server" Text="Log as Admin" />
-                                    <asp:Button ID="btnUser" CssClass="btn btn-warning" runat="server" Text="Log as User" />
+                                    <asp:Button ID="btnAdmin" CssClass="btn btn-info" runat="server" Text="Log as Admin" OnClick="btnAdmin_Click"/>
+                                    <asp:Button ID="btnUser" CssClass="btn btn-warning" runat="server" Text="Log as User" OnClick="btnUser_Click" />
                                 </div>
-                            </form>
+                            
                         </div>
                     </div>
                 </div>

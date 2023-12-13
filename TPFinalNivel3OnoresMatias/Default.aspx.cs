@@ -40,14 +40,66 @@ namespace TPFinalNivel3OnoresMatias
             }
         }
 
-        protected void btnEjemplo_Click(object sender, EventArgs e)
-        {
-
-        }
 
         protected void btnFavorito_Click(object sender, EventArgs e)
         {
+            try
+            {
+                LinkButton button = (LinkButton)sender;
 
+                string idArticulo = button.CommandArgument;
+                int id = Convert.ToInt32(idArticulo);
+
+                if (AgregarFavorito(id))
+                {
+                    //Mostrar toast o llevar a favoritos
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        private bool AgregarFavorito(int id)
+        {
+            bool agregado = false;
+            try
+            {
+                Usuario usuario = (Usuario)Session["User"];
+                articuloNegocio = new ArticuloNegocio();
+
+                int resultado = articuloNegocio.AgregarFavorito(usuario.Id, id);
+                if (resultado > 0)
+                {
+                    agregado = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return agregado;
+        }
+
+        protected void btnDetalles_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton button = (LinkButton)sender;
+
+                string idArticulo = button.CommandArgument;
+                int id = Convert.ToInt32(idArticulo);
+                
+                Response.Redirect("DetalleArticulo.aspx?id=" + id, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

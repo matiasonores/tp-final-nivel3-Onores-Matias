@@ -11,88 +11,106 @@ namespace TPFinalNivel3OnoresMatias
 {
 
 
-    public partial class SiteMaster
+    public partial class DetalleArticulo
     {
 
         /// <summary>
-        /// Head control.
+        /// imgArticulo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Head;
+        protected global::System.Web.UI.WebControls.Image imgArticulo;
 
         /// <summary>
-        /// btnArticulos control.
+        /// txtNombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnArticulos;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtNombre;
 
         /// <summary>
-        /// btnCategorias control.
+        /// txtId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnCategorias;
+        protected global::System.Web.UI.WebControls.TextBox txtId;
 
         /// <summary>
-        /// btnFavoritos control.
+        /// txtCodigo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnFavoritos;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtCodigo;
 
         /// <summary>
-        /// btnLogout control.
+        /// txtDescripcion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnLogout;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtDescripcion;
 
         /// <summary>
-        /// btnPerfil control.
+        /// txtMarca control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnPerfil;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtMarca;
 
         /// <summary>
-        /// btnLogin control.
+        /// txtCategoria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnLogin;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtCategoria;
 
         /// <summary>
-        /// btnSigin control.
+        /// txtPrecio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnSigin;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtPrecio;
 
         /// <summary>
-        /// MainContent control.
+        /// btnBorrarFavorito control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.Button btnBorrarFavorito;
+
+        /// <summary>
+        /// btnFavorito control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFavorito;
+
+        /// <summary>
+        /// btnCancelar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnCancelar;
     }
 }

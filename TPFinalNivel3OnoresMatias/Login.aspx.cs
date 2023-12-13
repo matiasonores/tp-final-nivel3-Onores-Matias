@@ -21,7 +21,10 @@ namespace TPFinalNivel3OnoresMatias
         {
             try
             {
-                IniciarSesionPrueba(1);
+                if (IniciarSesionPrueba(1) != null)
+                {
+                    Response.Redirect("Default.aspx", false);
+                }
             }
             catch (Exception ex)
             {
@@ -34,7 +37,14 @@ namespace TPFinalNivel3OnoresMatias
         {
             try
             {
-                IniciarSesionPrueba(2);
+                if(IniciarSesionPrueba(2) != null)
+                {
+                    Response.Redirect("Default.aspx",false);
+                }
+                //else
+                //{
+                //    ClientScript.RegisterStartupScript(this.GetType(), "alertMessage", "alert('Username already in use!')", true);
+                //}
             }
             catch (Exception ex)
             {
@@ -43,16 +53,21 @@ namespace TPFinalNivel3OnoresMatias
             }
         }
 
-        private void IniciarSesionPrueba(int user)
+        private Usuario IniciarSesionPrueba(int user)
         {
             usuarioNegocio = new UsuarioNegocio();
 
-            string username = user == 1 ? "admin@admin.com" : "admin";
-            string passwrod = user == 1 ? "user@user.com" : "user";
+            string username = user == 1 ? "admin@admin.com" : "user@user.com";
+            string passwrod = user == 1 ? "admin" : "user";
 
             Usuario prueba = usuarioNegocio.ObtenerUsuario(username,passwrod);
+            
+            if(prueba != null)
+            {
+                Session.Add("User", prueba);
+            }
 
-            Session.Add("User", prueba);
+            return prueba;
         }
     }
 }

@@ -3,21 +3,27 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+     <h2 id="itemArticulo">Artículos</h2>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <div class="row">
-                <div class="col-6">
+                <div class="col-5">
                     <div class="mb-3">
                         <asp:Label Text="Filtrar" runat="server" />
                         <asp:TextBox runat="server" ID="txtFiltro" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtFiltro_TextChanged" />
                     </div>
                 </div>
-                <div class="col-6" style="display: flex; flex-direction: column; justify-content: flex-end;">
+                <div class="col-5" style="display: flex; flex-direction: column; justify-content: flex-end;">
                     <div class="mb-3">
                         <asp:CheckBox Text="Filtro Avanzado" CssClass="" ID="chkAvanzado" runat="server" AutoPostBack="true" OnCheckedChanged="chkAvanzado_CheckedChanged" />
                     </div>
                 </div>
-
+                 
+                <div class="col-2 mx-auto" >
+                    <div class="mb-3">
+                        <asp:Button ID="btnAgregar" CssClass="btn btn-primary" runat="server" Text="Agregar" OnClick="btnAgregar_Click"/>
+                    </div>
+                </div>
                 <%if (chkAvanzado.Checked)
                     { %>
                 <div class="row">
@@ -54,7 +60,7 @@
                 </div>
                 <%} %>
             </div>
-            <asp:GridView ID="dgvArticulos" DataKeyNames="Id" runat="server" CssClass="table" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" OnSelectedIndexChanged="dgvArticulos_SelectedIndexChanged">
+            <asp:GridView ID="dgvArticulos" DataKeyNames="Id" runat="server" CssClass="table" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" OnSelectedIndexChanged="dgvArticulos_SelectedIndexChanged" OnPageIndexChanging="dgvArticulos_PageIndexChanging">
                 <Columns>
                     <asp:BoundField HeaderText="Código" DataField="Codigo" />
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
@@ -66,5 +72,5 @@
             </asp:GridView>
         </ContentTemplate>
     </asp:UpdatePanel>
-    <asp:Button ID="btnAgregar" CssClass="btn btn-primary" runat="server" Text="Agregar" OnClick="btnAgregar_Click"/>
+   
 </asp:Content>

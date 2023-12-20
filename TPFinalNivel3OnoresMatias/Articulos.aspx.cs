@@ -21,17 +21,11 @@ namespace TPFinalNivel3OnoresMatias
         {
             if (!IsPostBack)
             {
-                articuloNegocio = new ArticuloNegocio();
-                categoriaNegocio = new CategoriaNegocio();
-                marcaNegocio = new MarcaNegocio();
-
-
                 //Guardamos la lista en el session y bindeamos el session en el dgv
+                articuloNegocio = new ArticuloNegocio();
                 List<Articulo> lista = articuloNegocio.ObtenerArticulos();
                 Session.Add("listaArticulos", lista);
-
-                dgvArticulos.DataSource = Session["listaArticulos"];
-                dgvArticulos.DataBind();
+                CargarArticulos();
             }
         }
 
@@ -40,7 +34,7 @@ namespace TPFinalNivel3OnoresMatias
             List<Articulo> lista = (List<Articulo>)Session["listaArticulos"];
             string busqueda = txtFiltro.Text.ToUpper();
             List<Articulo> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(busqueda));
-
+            
             dgvArticulos.DataSource = listaFiltrada;
             dgvArticulos.DataBind();
         }
@@ -98,6 +92,29 @@ namespace TPFinalNivel3OnoresMatias
             //Capturamos el id y lo usamos para redireccionar al formulario de pokemon
             string id = dgvArticulos.SelectedDataKey.Value.ToString();
             Response.Redirect("ArticulosABM.aspx?id=" + id);
+        }
+
+
+        protected void dgvArticulos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
+            try
+            {
+                CargarArticulos();
+                dgvArticulos.PageIndex = e.NewPageIndex;
+                dgvArticulos.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        private void CargarArticulos()
+        {
+            dgvArticulos.DataSource = Session["listaArticulos"];
+            dgvArticulos.DataBind();
         }
     }
 }

@@ -49,7 +49,8 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Inicio</a></li>
                         <li class="nav-item"><a id="btnArticulos" class="nav-link" runat="server" href="~/Articulos">Articulos</a></li>
-                        <li class="nav-item"><a id="btnCategorias" class="nav-link" runat="server" href="~/MarcasABM">Marcas y Categorias</a></li>
+                        <li class="nav-item"><a id="btnMarcas" class="nav-link" runat="server" href="~/MarcasABM">Marcas</a></li>
+                        <li class="nav-item"><a id="btnCategorias" class="nav-link" runat="server" href="~/CategoriasABM">Categorias</a></li>
                         <li class="nav-item"><a id="btnFavoritos" class="nav-link" runat="server" href="~/ArticulosFavoritos">Favoritos</a></li>
                     </ul>
                 </div>

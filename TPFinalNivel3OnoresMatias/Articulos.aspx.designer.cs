@@ -42,6 +42,15 @@ namespace TPFinalNivel3OnoresMatias
         protected global::System.Web.UI.WebControls.CheckBox chkAvanzado;
 
         /// <summary>
+        /// btnAgregar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgregar;
+
+        /// <summary>
         /// lblCampo control.
         /// </summary>
         /// <remarks>
@@ -94,14 +103,5 @@ namespace TPFinalNivel3OnoresMatias
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView dgvArticulos;
-
-        /// <summary>
-        /// btnAgregar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregar;
     }
 }

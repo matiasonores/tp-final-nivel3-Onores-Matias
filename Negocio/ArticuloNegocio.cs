@@ -280,5 +280,27 @@ namespace Negocio
 
             return eliminado;
         }
+
+        public List<Articulo> ObtenerTopFavoritos(int cantidad)
+        {
+            List<Articulo> topFavoritos = new List<Articulo>();
+            try
+            {
+                _db = new AccesoDB();
+                _db.SetProcedure("ObtenerTopFavoritos");
+                _db.SetParameter("@cantidad", cantidad);
+                _db.EjecutarLectura();
+                while (_db.Lector.Read())
+                {
+                    Articulo articulo = CrearArticulo(_db.Lector);
+                    topFavoritos.Add(articulo);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return topFavoritos;
+        }
     }
 }

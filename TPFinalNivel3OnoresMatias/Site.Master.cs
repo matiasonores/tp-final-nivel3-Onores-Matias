@@ -94,6 +94,7 @@ namespace TPFinalNivel3OnoresMatias
                         puedeVer =  Page is _Default || Page is Perfil || Page is ArticulosFavoritos || Page is DetalleArticulo;
                         btnArticulos.Visible = false;
                         btnCategorias.Visible = false;
+                        btnMarcas.Visible = false;
                         //btnFavoritos.Visible = false;
                     }
                 }
@@ -103,6 +104,7 @@ namespace TPFinalNivel3OnoresMatias
                     btnArticulos.Visible = false;
                     btnCategorias.Visible = false;
                     btnFavoritos.Visible = false;
+                    btnMarcas.Visible = false;
                 }
 
                 if (!puedeVer)

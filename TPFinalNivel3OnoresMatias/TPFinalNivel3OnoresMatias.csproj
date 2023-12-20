@@ -105,6 +105,7 @@
     <Content Include="Articulos.aspx" />
     <Content Include="ArticulosABM.aspx" />
     <Content Include="ArticulosFavoritos.aspx" />
+    <Content Include="CategoriasABM.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -214,6 +215,13 @@
     </Compile>
     <Compile Include="ArticulosFavoritos.aspx.designer.cs">
       <DependentUpon>ArticulosFavoritos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CategoriasABM.aspx.cs">
+      <DependentUpon>CategoriasABM.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CategoriasABM.aspx.designer.cs">
+      <DependentUpon>CategoriasABM.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

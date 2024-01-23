@@ -12,6 +12,7 @@ namespace TPFinalNivel3OnoresMatias
     public partial class Login : System.Web.UI.Page
     {
         UsuarioNegocio usuarioNegocio;
+        string _mensaje;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -28,8 +29,8 @@ namespace TPFinalNivel3OnoresMatias
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _mensaje = "Ocurrió un error al intentar iniciar sesión como admin: ";
+                ClientScript.RegisterStartupScript(this.GetType(), "msg", "alert('" + _mensaje + ex.Message + "');", true);
             }
         }
 
@@ -37,37 +38,41 @@ namespace TPFinalNivel3OnoresMatias
         {
             try
             {
-                if(IniciarSesionPrueba(2) != null)
+                if (IniciarSesionPrueba(2) != null)
                 {
-                    Response.Redirect("Default.aspx",false);
+                    Response.Redirect("Default.aspx", false);
                 }
-                //else
-                //{
-                //    ClientScript.RegisterStartupScript(this.GetType(), "alertMessage", "alert('Username already in use!')", true);
-                //}
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _mensaje = "Ocurrió un error al intentar iniciar sesión como usuario: ";
+                ClientScript.RegisterStartupScript(this.GetType(), "msg", "alert('" + _mensaje + ex.Message + "');", true);
             }
         }
 
         private Usuario IniciarSesionPrueba(int user)
         {
-            usuarioNegocio = new UsuarioNegocio();
-
-            string username = user == 1 ? "admin@admin.com" : "user@user.com";
-            string passwrod = user == 1 ? "admin" : "user";
-
-            Usuario prueba = usuarioNegocio.ObtenerUsuario(username,passwrod);
-            
-            if(prueba != null)
+            Usuario prueba = null;
+            try
             {
-                Session.Add("User", prueba);
-            }
+                usuarioNegocio = new UsuarioNegocio();
 
+                string username = user == 1 ? "admin@admin.com" : "user@user.com";
+                string passwrod = user == 1 ? "admin" : "user";
+
+                prueba = usuarioNegocio.ObtenerUsuario(username, passwrod);
+                
+                if (prueba != null)
+                {
+                    Session.Add("User", prueba);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             return prueba;
+
         }
     }
 }

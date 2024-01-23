@@ -13,30 +13,33 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">¡Bienvenido!</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            
-                                <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1">
-                                </div>
-                                <div class="mb-3">
-                                    <asp:Button runat="server" ID="btnLogin" class="btn btn-success" Text="Log In"/>
-                                    <asp:LinkButton href="Sigin.aspx" runat="server" ID="btnSignin" type="submit" class="btn btn-primary">Sign In</asp:LinkButton>
-                                </div>
-                                <div class="mb-3">
-                                    <asp:Button ID="btnAdmin" CssClass="btn btn-info" runat="server" Text="Log as Admin" OnClick="btnAdmin_Click"/>
-                                    <asp:Button ID="btnUser" CssClass="btn btn-warning" runat="server" Text="Log as User" OnClick="btnUser_Click" />
-                                </div>
-                            
+                            <p class="card-text">Ingrese su dirección de correo electrónico y contraseña para iniciar sesión o continúe como visitante para ver el catálogo.</p>
+
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" />
+
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            <div class="mb-3">
+                                <asp:Button runat="server" ID="btnLogin" class="btn btn-success" Text="Log In" />
+                                <asp:LinkButton href="Signin.aspx" runat="server" ID="btnSignin" type="submit" class="btn btn-primary">Sign In</asp:LinkButton>
+                            </div>
+                            <div class="mb-3">
+                                <p class="card-text">¿Desea iniciar una sesión de prueba?</p>
+                                <asp:Button ID="btnAdmin" CssClass="btn btn-secondary" runat="server" Text="Log as Admin" OnClick="btnAdmin_Click" />
+                                <asp:Button ID="btnUser" CssClass="btn btn-warning" runat="server" Text="Log as User" OnClick="btnUser_Click" />
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    
 </asp:Content>

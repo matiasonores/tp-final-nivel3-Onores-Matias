@@ -4,72 +4,80 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
 
-        
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <div class="nav-item m-1">
-                <asp:Label ID="lblCategorias" For="ddlCategorias" runat="server" CssClass="nav-item form-label text-white" Text="Categorias"></asp:Label>
-            </div>
-            <div class="nav-item m-1">
-                <asp:DropDownList ID="ddlCategorias" CssClass="nav-item form-select" runat="server" OnSelectedIndexChanged="ddlCategorias_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-            </div>
-            <div class="nav-item input-group">
-          
-                <asp:TextBox ID="txtBuscar" AutoPostBack="true" runat="server" CssClass="form-control" placeholder="Buscar articulo" OnTextChanged="txtBuscar_TextChanged"></asp:TextBox>
-                <div class="input-group-text"><i class="bi bi-search"></i></div>
-            </div>
-        </div>
-    </nav>
-    <div class="row justify-content-center">
-        <div class="col-8">
-            <div class="mb-3 text-center">
-                <asp:Label ID="lblTop" runat="server" CssClass="display-3 " Text="Top 3 favoritos"></asp:Label>
 
-            </div>
-            <%--    Carrusel con repeater--%>
-            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <asp:Repeater ID="RepeaterCarousel" runat="server">
-                        <ItemTemplate>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to='<%# Container.ItemIndex %>' class='<%# Container.ItemIndex == 0 ? "active" : "" %>' aria-current='<%# Container.ItemIndex == 0 %>' aria-label='<%# "Slide " + (Container.ItemIndex + 1) %>'></button>
-                        </ItemTemplate>
-                    </asp:Repeater>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+
+                    <div class="col nav-item m-1">
+                        <asp:Label ID="lblCategorias" For="ddlCategorias" runat="server" CssClass="nav-item form-label text-white" Text="Categorias"></asp:Label>
+                    </div>
+                    <div class="col nav-item m-1">
+                        <asp:DropDownList ID="ddlCategorias" CssClass="nav-item form-select" runat="server" OnSelectedIndexChanged="ddlCategorias_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                    </div>
+                    <div class="col nav-item input-group">
+                        <asp:TextBox ID="txtBuscar" AutoPostBack="true" runat="server" CssClass="form-control" placeholder="Buscar articulo" OnTextChanged="txtBuscar_TextChanged"></asp:TextBox>
+                        <div class="input-group-text"><i class="bi bi-search"></i></div>
+                    </div>
+                    <div class="col nav-item m-1">
+                        <asp:Label ID="lblORdenar" For="ddlOrdenar" runat="server" CssClass="nav-item form-label text-white ml-auto" Text="Ordenar por:"></asp:Label>
+                    </div>
+                    <div class="col nav-item m-1">
+                        <asp:DropDownList ID="ddlOrdenar" CssClass="nav-item form-select" runat="server" OnSelectedIndexChanged="ddlOrdenar_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                    </div>
+                    <div class="col nav-item m-1">
+                        <asp:DropDownList ID="ddlCriterio" CssClass="nav-item form-select" runat="server" OnSelectedIndexChanged="ddlCriterio_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                    </div>
                 </div>
-                <div class="carousel-inner">
-                    <asp:Repeater ID="RepeaterCarousel2" runat="server">
-                        <ItemTemplate>
-                            <div class='<%# "carousel-item" + (Container.ItemIndex == 0 ? " active" : "")%>'>
-                                <img src='Images/<%# Eval("Imagen") %>' class="d-block w-50 mx-auto" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5 class="text-dark"><%# Eval("Nombre") %></h5>
-                                    <%--<p class="text-dark"><%# Eval("Descripcion") %></p>--%>
-                                </div>
-                            </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
+            </nav>
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <div class="mb-3 text-center">
+                        <asp:Label ID="lblTop" runat="server" CssClass="display-3 " Text="Top 3 favoritos"></asp:Label>
+                    </div>
+                    <%--    Carrusel con repeater--%>
+                    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <asp:Repeater ID="RepeaterCarousel" runat="server">
+                                <ItemTemplate>
+                                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to='<%# Container.ItemIndex %>' class='<%# Container.ItemIndex == 0 ? "active" : "" %>' aria-current='<%# Container.ItemIndex == 0 %>' aria-label='<%# "Slide " + (Container.ItemIndex + 1) %>'></button>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </div>
+                        <div class="carousel-inner">
+                            <asp:Repeater ID="RepeaterCarousel2" runat="server">
+                                <ItemTemplate>
+                                    <div class='<%# "carousel-item" + (Container.ItemIndex == 0 ? " active" : "")%>'>
+                                        <img src='Images/<%# Eval("Imagen") %>' class="d-block w-50 mx-auto" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5 class="text-dark"><%# Eval("Nombre") %></h5>
+                                            <%--<p class="text-dark"><%# Eval("Descripcion") %></p>--%>
+                                        </div>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
 
-            <div class="mb-3 text-center">
-                <asp:Label ID="lblArticulos" runat="server" CssClass="display-3 " Text="Todos los articulos"></asp:Label>
+                    <div class="mb-3 text-center">
+                        <asp:Label ID="lblArticulos" runat="server" CssClass="display-3 " Text="Todos los articulos"></asp:Label>
 
-            </div>
+                    </div>
 
-            <div class="row row-cols-5 row-cols-md-5 g-4">
-                <asp:Repeater ID="repRepetidor" runat="server">
+                    <div class="row row-cols-5 row-cols-md-5 g-4">
+                        <asp:Repeater ID="repRepetidor" runat="server">
 
-                    <ItemTemplate>
-                        <div class="col">
-                            <div class="card h-100">
-                                    <asp:LinkButton runat="server" ID="btnDetalles" CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloId" OnClick="btnDetalles_Click">
+                            <ItemTemplate>
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <asp:LinkButton runat="server" ID="btnDetalles" CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloId" OnClick="btnDetalles_Click">
 
                                 <img src="Images/<%#Eval("Imagen") %>" class="card-img-top" alt="...">
                                 <div class="card-body">
@@ -81,13 +89,49 @@
                                 
                                 </div>
                                         </asp:LinkButton>
-                            </div>
-                        </div>
-                    </ItemTemplate>
-                </asp:Repeater>
+                                    </div>
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
+
+                   
+                </div>
+
+                <div class="toast-container position-absolute top-50 start-50 translate-middle">
+            <div class="toast" id="miToast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img src="..." class="rounded me-2" alt="...">
+                    <strong class="me-auto">Bootstrap</strong>
+                    <small>11 mins ago</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Hello, world! This is a toast message.
+                </div>
             </div>
         </div>
-    </div>
-            </ContentTemplate>
+            </div>
+            
+             <%--<div aria-live="polite" aria-atomic="true" class="position-relative">--%>
+        <!-- Position it: -->
+        <!-- - `.toast-container` for spacing between toasts -->
+        <!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner -->
+        <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
+        
+    <%--</div>--%>
+        </ContentTemplate>
     </asp:UpdatePanel>
+    
+    
+
+    <script type='text/javascript'>
+        function mostrarModal() {
+            $(document).ready(function () {
+                var miToastEl = document.getElementById('miToast');
+                var miToast = new bootstrap.Toast(miToastEl);
+                miToast.show();
+            });
+        }
+    </script>
 </asp:Content>

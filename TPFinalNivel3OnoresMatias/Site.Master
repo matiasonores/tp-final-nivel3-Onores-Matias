@@ -51,6 +51,7 @@
                         <li class="nav-item"><a id="btnArticulos" class="nav-link" runat="server" href="~/Articulos">Articulos</a></li>
                         <li class="nav-item"><a id="btnMarcas" class="nav-link" runat="server" href="~/MarcasABM">Marcas</a></li>
                         <li class="nav-item"><a id="btnCategorias" class="nav-link" runat="server" href="~/CategoriasABM">Categorias</a></li>
+                        <li class="nav-item"><a id="btnUsuarios" class="nav-link" runat="server" href="~/Usuarios">Usuarios</a></li>
                         <li class="nav-item"><a id="btnFavoritos" class="nav-link" runat="server" href="~/ArticulosFavoritos">Favoritos</a></li>
                     </ul>
                 </div>
@@ -124,3 +125,9 @@
     </asp:PlaceHolder>
 </body>
 </html>
+
+<script>
+    function MostrarMensaje(mensaje) {
+        alert(mensaje);
+    }
+</script>

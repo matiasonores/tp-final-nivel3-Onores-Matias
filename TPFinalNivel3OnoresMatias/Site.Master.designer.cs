@@ -51,6 +51,15 @@ namespace TPFinalNivel3OnoresMatias
         protected global::System.Web.UI.HtmlControls.HtmlAnchor btnCategorias;
 
         /// <summary>
+        /// btnUsuarios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnUsuarios;
+
+        /// <summary>
         /// btnFavoritos control.
         /// </summary>
         /// <remarks>

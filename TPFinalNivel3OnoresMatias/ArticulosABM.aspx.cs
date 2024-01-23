@@ -17,24 +17,25 @@ namespace TPFinalNivel3OnoresMatias
         CategoriaNegocio categoriaNegocio;
         ArticuloNegocio articuloNegocio;
         bool camposValidos;
+        string idArticulo;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                string id = Request.QueryString["id"];
+                idArticulo = Request.QueryString["id"];
 
                 if (!IsPostBack)
                 {
                     CargarControles();
                 }
 
-                if (!string.IsNullOrEmpty(id) && !IsPostBack)
+                if (!string.IsNullOrEmpty(idArticulo) && !IsPostBack)
                 {
                     articuloNegocio = new ArticuloNegocio();
                     
-                    Articulo articulo = articuloNegocio.ObtenerArticulo(Convert.ToInt32(id));
-                    txtId.Text = id;
+                    Articulo articulo = articuloNegocio.ObtenerArticulo(Convert.ToInt32(idArticulo));
+                    txtId.Text = idArticulo;
                     txtCodigo.Text = articulo.Codigo;
                     txtNombre.Text = articulo.Nombre;
                     txtDescripcion.Text = articulo.Descripcion;
@@ -48,35 +49,46 @@ namespace TPFinalNivel3OnoresMatias
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                ClientScript.RegisterStartupScript(this.GetType(), "msg", "alert('" + ex.Message + "');", true);
             }
         }
 
         private void CargarControles()
         {
-            string ruta = "~/Images/"; //Para LEER la ruta de imagen
-            string imagePlaceholder = "imagePlaceholder"; //Nombre del archivo
-            string extension = ".jpg"; //Extension
+            try
+            {
+                string ruta = "~/Images/"; //Para LEER la ruta de imagen
+                string imagePlaceholder = "imagePlaceholder"; //Nombre del archivo
+                string extension = ".jpg"; //Extension
 
-            imagen.ImageUrl = ruta + imagePlaceholder + extension;
+                imagen.ImageUrl = ruta + imagePlaceholder + extension;
 
-            marcaNegocio = new MarcaNegocio();
-            categoriaNegocio = new CategoriaNegocio();
+                marcaNegocio = new MarcaNegocio();
+                categoriaNegocio = new CategoriaNegocio();
 
-            List<Marca> marcas = marcaNegocio.ObtenerMarcas(); //Traemos todas las marcas
-            Session.Add("marcas", marcas);
-            ddlMarca.DataSource = marcas; //Las asignamos al ddl
-            ddlMarca.DataTextField = "Descripcion"; //Mostrarmos la descripcion de la marca
-            ddlMarca.DataValueField = "Id"; //Escondemos el ID
-            ddlMarca.DataBind();
+                List<Marca> marcas = marcaNegocio.ObtenerMarcas(); //Traemos todas las marcas
+                marcas.Insert(0, new Marca { Id = 0, Descripcion = "Seleccione..." });
 
-            List<Categoria> categorias = categoriaNegocio.ObtenerCategorias();
-            Session.Add("categorias", categorias);
-            ddlCategoria.DataSource = categorias;
-            ddlCategoria.DataTextField = "Descripcion";
-            ddlCategoria.DataValueField = "Id";
-            ddlCategoria.DataBind();
+                Session.Add("marcas", marcas);
+                ddlMarca.DataSource = marcas; //Las asignamos al ddl
+                ddlMarca.DataTextField = "Descripcion"; //Mostrarmos la descripcion de la marca
+                ddlMarca.DataValueField = "Id"; //Escondemos el ID
+                ddlMarca.DataBind();
+
+                List<Categoria> categorias = categoriaNegocio.ObtenerCategorias();
+                categorias.Insert(0, new Categoria { Id = 0, Descripcion = "Seleccione..." });
+
+                Session.Add("categorias", categorias);
+                ddlCategoria.DataSource = categorias;
+                ddlCategoria.DataTextField = "Descripcion";
+                ddlCategoria.DataValueField = "Id";
+                ddlCategoria.DataBind();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocurrió un error al cargar controles: " + ex.Message);
+            }
+
         }
         private string GuardarImagen()
         {
@@ -115,7 +127,7 @@ namespace TPFinalNivel3OnoresMatias
             catch (Exception ex)
             {
                 Session.Add("Error", ex.ToString());
-                throw new Exception("Ocurrió un error al guardar la imagen");
+                throw new Exception("Ocurrió un error al guardar la imagen: " + ex.Message);
             }
 
         }
@@ -133,7 +145,7 @@ namespace TPFinalNivel3OnoresMatias
                 {
                     bool existeID = !string.IsNullOrEmpty(txtId.Text);
                     
-                    int id = AgregarArticulo(codigo, nombre, descripcion, imagen, precio, existeID);
+                    int id = AgregarArticulo(Convert.ToInt32(this.idArticulo), codigo, nombre, descripcion, imagen, precio, existeID);
                     
                     if (id > 0)
                     {
@@ -143,11 +155,11 @@ namespace TPFinalNivel3OnoresMatias
             }
             catch (Exception ex)
             {
-                throw ex;
+                ClientScript.RegisterStartupScript(this.GetType(), "msg", "alert('" + ex.Message +"');", true);
             }
         }
 
-        private int AgregarArticulo(string codigo, string nombre, string descripcion, string imagen, decimal precio, bool existeID)
+        private int AgregarArticulo(int idArticulo, string codigo, string nombre, string descripcion, string imagen, decimal precio, bool existeID)
         {
             Articulo articulo;
             int id;
@@ -167,6 +179,7 @@ namespace TPFinalNivel3OnoresMatias
                 articuloNegocio = new ArticuloNegocio();
                 if (existeID)
                 {
+                    articulo.Id = idArticulo;
                     id = Convert.ToInt32(articuloNegocio.ModificarArticulo(articulo));
                 }
                 else
@@ -214,7 +227,8 @@ namespace TPFinalNivel3OnoresMatias
             }
             catch (Exception ex)
             {
-                throw ex;
+                ClientScript.RegisterStartupScript(this.GetType(), "msg", "alert('" + ex.Message + "');", true);
+
             }
         }
 

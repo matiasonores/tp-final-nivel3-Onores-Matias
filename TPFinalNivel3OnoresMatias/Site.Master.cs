@@ -87,24 +87,29 @@ namespace TPFinalNivel3OnoresMatias
 
                     if(esAdmin)
                     {
+                        //Puede ver todo
                         puedeVer = true;
                     }
                     else
                     {
+                        //Si es usuario
                         puedeVer =  Page is _Default || Page is Perfil || Page is ArticulosFavoritos || Page is DetalleArticulo;
                         btnArticulos.Visible = false;
                         btnCategorias.Visible = false;
                         btnMarcas.Visible = false;
+                        btnUsuarios.Visible = false;
                         //btnFavoritos.Visible = false;
                     }
                 }
                 else 
                 {
-                    puedeVer = Page is Login || Page is _Default || Page is Signin;
+                    //Si es visitante
+                    puedeVer = Page is Login || Page is _Default || Page is Signin || Page is Error;
                     btnArticulos.Visible = false;
                     btnCategorias.Visible = false;
                     btnFavoritos.Visible = false;
                     btnMarcas.Visible = false;
+                    btnUsuarios.Visible = false;
                 }
 
                 if (!puedeVer)

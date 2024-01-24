@@ -97,7 +97,7 @@ namespace Negocio
 
                 if (_db.Lector.Read())
                 {
-                    existe = true;
+                    existe = _db.Lector["id"] != DBNull.Value && (int)_db.Lector["id"] > 0;
                 }
             }
             catch (Exception ex)

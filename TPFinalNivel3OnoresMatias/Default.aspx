@@ -35,7 +35,7 @@
                         <asp:Label ID="lblTop" runat="server" CssClass="display-3 " Text="Top 3 favoritos"></asp:Label>
                     </div>
                     <%--    Carrusel con repeater--%>
-                    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" style="display: none">
                         <div class="carousel-indicators">
                             <asp:Repeater ID="RepeaterCarousel" runat="server">
                                 <ItemTemplate>

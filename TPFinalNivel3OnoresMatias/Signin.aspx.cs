@@ -67,17 +67,23 @@ namespace TPFinalNivel3OnoresMatias
                             i = usuarioNegocio.AgregarUsuario(nuevo);
                         }
                     }
+                    else
+                    {
+                        mensaje = "El email no es válido. ";
+                    }
+                }
+                else
+                {
+                    mensaje = "Debe cargar todos los campos. ";
                 }
 
                 if(i>0)
                 {
                     mensaje = "¡Usuario agregado con éxito!";
-                    
-
                 }
                 else
                 {
-                    mensaje = "No se pudo agregar el nuevo usuario";
+                    mensaje += "No se pudo agregar el nuevo usuario";
                 }
                 
                 ScriptManager.RegisterStartupScript(this, GetType(), "MostrarModal", "mostrarModal()", true);
@@ -85,7 +91,8 @@ namespace TPFinalNivel3OnoresMatias
             }
             catch (Exception ex)
             {
-                throw;
+                mensaje = ex.Message;
+                ScriptManager.RegisterStartupScript(this, GetType(), "MostrarModal", "mostrarModal()", true);
             }
         }
 
@@ -98,6 +105,13 @@ namespace TPFinalNivel3OnoresMatias
                 Regex regex = new Regex(pattern);
 
                 esValido= regex.IsMatch(email);
+
+                if (esValido)
+                {
+                    UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+                    //ValidarEmail devuelve true si lo encuentra, entonces hay que negarlo
+                    esValido = !usuarioNegocio.ValidarEmail(email);
+                }
 
             }
             catch (Exception ex)

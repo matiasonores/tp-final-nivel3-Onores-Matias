@@ -44,12 +44,13 @@
 
                                     <div class="mb-3">
                                         <asp:Label ID="lblImagenPerfil" CssClass="form-label" runat="server" Text="Imagen de Perfil"></asp:Label>
-                                        <asp:FileUpload ID="fuImagen" CssClass="form-control" runat="server" Accept=".jpg" />
+                                        <asp:FileUpload ID="fuImagen" Type="File" CssClass="form-control" runat="server" Accept=".jpg" ClientIDMode="Static"></asp:FileUpload>
+
                                         <asp:RequiredFieldValidator ID="rfvImagenPerfil" runat="server" ControlToValidate="fuImagen" ErrorMessage="La imagen de perfil es requerida." Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
                                         <asp:RegularExpressionValidator ID="revImagenPerfil" runat="server" ControlToValidate="fuImagen" ErrorMessage="Solo se permiten archivos JPG." ValidationExpression="^.*\.(jpg|JPG)$" Display="Dynamic" CssClass="text-danger"></asp:RegularExpressionValidator>
                                     </div>
 
-                                    <asp:Button ID="btnSignIn" runat="server" CssClass="btn btn-primary" Text="Log In" OnClick="btnSignIn_Click" />
+                                    <asp:Button ID="btnSignIn" runat="server" CssClass="btn btn-primary" Text="Sign In" OnClick="btnSignIn_Click" />
 
 
                                 </div>
@@ -72,7 +73,12 @@
                 </div>
             </div>
             </div>
+
         </ContentTemplate>
+        <%--Para que funcione correctamente el fileupload--%>
+         <Triggers>
+        <asp:PostBackTrigger ControlID="btnSignIn" />
+    </Triggers>
     </asp:UpdatePanel>
 
     <script type='text/javascript'>

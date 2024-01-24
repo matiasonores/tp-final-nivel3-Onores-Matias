@@ -40,12 +40,20 @@ namespace TPFinalNivel3OnoresMatias
 
         private void VerificarFavorito()
         {
-            articuloNegocio = new ArticuloNegocio();
-            Usuario usuario = (Usuario)Session["User"];
-            int userID = usuario.Id;
-            Articulo articulo = articuloNegocio.ObtenerArticuloFavorito(userID, idArticulo);
+            try
+            {
+                articuloNegocio = new ArticuloNegocio();
+                Usuario usuario = (Usuario)Session["User"];
+                int userID = usuario != null ? usuario.Id : 0;
+                Articulo articulo = articuloNegocio.ObtenerArticuloFavorito(userID, idArticulo);
 
-            esFavorito = articulo != null ? true : false;
+                esFavorito = articulo != null ? true : false;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         private void CargarArticulo()

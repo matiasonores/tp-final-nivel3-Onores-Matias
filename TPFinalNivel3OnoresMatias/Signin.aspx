@@ -14,8 +14,8 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">¡Bienvenido!</h5>
-                                    <p class="card-text">Para generar un nuevo usuario y poder acceder a funcionalidades adicionales de la aplicación, cargue los campos correctamente.</p>
+                                    <h5 class="card-title">¡Registro!</h5>
+                                    <p class="card-text">¡Bienvenido! Para generar un nuevo usuario y poder acceder a funcionalidades adicionales de la aplicación, cargue los campos correctamente.</p>
 
                                     <div class="mb-3">
                                         <asp:Label ID="lblEmail" CssClass="form-label" runat="server" Text="Email"></asp:Label>

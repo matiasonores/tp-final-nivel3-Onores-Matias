@@ -15,6 +15,15 @@ namespace TPFinalNivel3OnoresMatias
     {
 
         /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+
+        /// <summary>
         /// imgPerfil control.
         /// </summary>
         /// <remarks>
@@ -105,13 +114,13 @@ namespace TPFinalNivel3OnoresMatias
         protected global::System.Web.UI.WebControls.Label lblImagen;
 
         /// <summary>
-        /// txtImagen control.
+        /// fuImagen control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload txtImagen;
+        protected global::System.Web.UI.WebControls.FileUpload fuImagen;
 
         /// <summary>
         /// btnVolver control.

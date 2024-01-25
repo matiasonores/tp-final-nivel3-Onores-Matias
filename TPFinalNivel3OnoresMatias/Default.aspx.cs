@@ -14,10 +14,18 @@ namespace TPFinalNivel3OnoresMatias
     {
         ArticuloNegocio articuloNegocio;
         CategoriaNegocio categoriaNegocio;
+        Usuario usuario;
+        public string toast;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                if(Session["User"] != null)
+                {
+                    usuario = (Usuario)Session["User"];
+                    toast = "¡Bienvenido " + usuario.Nombre + "!";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "MostrarModal", "mostrarModal()", true);
+                }
                 CargarArticulos();
                 CargarCategorias();
                 CargarFavoritos();
@@ -144,12 +152,15 @@ namespace TPFinalNivel3OnoresMatias
             //Filtramos la lista
             if (filtro == "Seleccione...")
             {
+                lblArticulos.Text = "Todos los articulos";
                 repRepetidor.DataSource = articulos;
             }
             else
             {
                 List<Articulo> articulosFiltrados = articulos.Where(x => x.Categoria.Descripcion == filtro).ToList();
                 //Bindeamos la lista nueva
+                lblArticulos.Text = filtro;
+
                 repRepetidor.DataSource = articulosFiltrados;
             }
             repRepetidor.DataBind();
@@ -251,9 +262,6 @@ namespace TPFinalNivel3OnoresMatias
             {
                 OrdenarArticulos();
                 
-                //ClientScript.RegisterStartupScript(this.GetType(), "MostrarModal", "mostrarModal()", true);
-                ScriptManager.RegisterStartupScript(this, GetType(), "MostrarModal", "mostrarModal()", true);
-
             }
             catch (Exception ex)
             {

@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="row">
+    
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
                 <div class="form-group">
@@ -18,8 +18,35 @@
                     </div>
                     <asp:Button ID="btnAgregarMarca" CssClass="btn btn-success" runat="server" Text="Agregar" OnClick="btnAgregarMarca_Click" />
                 </div>
+                 <div class="toast-container position-absolute top-50 start-50 translate-middle">
+                <div class="toast" id="miToast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
 
-            </ContentTemplate>
-        </asp:UpdatePanel>
-    </div>
+                        <strong class="me-auto">Sign In</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        <p id="txtMensaje"><%= (this.mensaje)%></p>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        </ContentTemplate>
+        <%--Para que funcione correctamente el fileupload--%>
+         <Triggers>
+        <asp:PostBackTrigger ControlID="btnAgregarMarca" />
+    </Triggers>
+    </asp:UpdatePanel>
+
+     <script type='text/javascript'>
+        function mostrarModal() {
+            $(document).ready(function () {
+                var miToastEl = document.getElementById('miToast');
+                var miToast = new bootstrap.Toast(miToastEl);
+
+                miToast.show();
+            });
+        }
+     </script>
 </asp:Content>

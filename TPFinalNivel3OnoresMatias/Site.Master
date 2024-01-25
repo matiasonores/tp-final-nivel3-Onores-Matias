@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Mi Catalogo</title>
+    <title><%: Page.Title %> - Catalogo Web</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -41,7 +41,7 @@
 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" runat="server" href="~/">Mi Catalogo</a>
+                <a class="navbar-brand" runat="server" href="~/">Catalogo Web</a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -60,16 +60,13 @@
                         <%if (isLoggedIn)
                             {
                         %>
-                        <%--<li class="nav-item ms-auto"><a class="nav-link" runat="server" href="~/ArticulosFavoritos">Log out</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/MiPerfil">Mi perfil</a></li>--%>
                         
                         <li class="nav-item ms-auto"> <asp:LinkButton ID="btnLogout" CssClass="nav-link" OnClick="btnLogout_Click" runat="server">Log out</asp:LinkButton></li>
                         <li class="nav-item"> <asp:LinkButton ID="btnPerfil" CssClass="nav-link" OnClick="btnPerfil_Click" runat="server">Mi perfil</asp:LinkButton></li>
                         <%}
                             else
                             {%>
-                        <%--<li class="nav-item ms-auto"><a class="nav-link" runat="server" href="~/Login">Log In</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Signin">Sign In</a></li>--%>
+             
                         <li class="nav-item ms-auto"> <asp:LinkButton ID="btnLogin" AutoPostBack="false" CssClass="nav-link" href="Login.aspx" runat="server">Log in</asp:LinkButton></li>
                         <li class="nav-item"> <asp:LinkButton ID="btnSigin" AutoPostBack="false" CssClass="nav-link" href="Signin.aspx" runat="server">Sign in</asp:LinkButton></li>
                         <%} %>
@@ -80,10 +77,6 @@
         <div class="container body-content mt-0">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-           <%-- <hr />--%>
-            <%--<footer class="footer">
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
-            </footer>--%>
         </div>
     </form>
     <footer class="bg-dark text-center text-white">
@@ -91,18 +84,7 @@
         <div class="container p-4 pb-0">
             <!-- Section: Social media -->
             <section class="mb-4">
-                <!-- Facebook -->
-                <%--<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
-
-                <!-- Twitter -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
-
-                <!-- Google -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
-
-                <!-- Instagram -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>--%>
-
+                
                 <!-- Linkedin -->
                 <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/matiasonores/" role="button"><i class="bi bi-linkedin"></i></a>
 

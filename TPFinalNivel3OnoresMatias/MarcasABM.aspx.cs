@@ -12,6 +12,7 @@ namespace TPFinalNivel3OnoresMatias
     public partial class MarcasABM : System.Web.UI.Page
     {
         MarcaNegocio marcaNegocio;
+        public string mensaje;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,8 +22,8 @@ namespace TPFinalNivel3OnoresMatias
             }
             catch (Exception ex)
             {
-
-                //Mostrar modal
+                mensaje = ex.Message;
+                ScriptManager.RegisterStartupScript(this, GetType(), "MostrarModal", "mostrarModal()", true);
             }
         }
         private void CargarControles()
@@ -57,12 +58,20 @@ namespace TPFinalNivel3OnoresMatias
                     if (id > 0)
                     {
                         ActualizarMarcas(id, marca);
+                        mensaje = "¡Marca agregada con éxito!";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "MostrarModal", "mostrarModal()", true);
                     }
+                }
+                else
+                {
+                    mensaje = "Ingrese un nombre para la marca";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "MostrarModal", "mostrarModal()", true);
                 }
             }
             catch (Exception ex)
             {
-                //Mostrar modal
+                mensaje = ex.Message;
+                ScriptManager.RegisterStartupScript(this, GetType(), "MostrarModal", "mostrarModal()", true);
             }
         }
 

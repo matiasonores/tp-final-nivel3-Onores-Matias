@@ -12,6 +12,7 @@ namespace TPFinalNivel3OnoresMatias
     public partial class CategoriasABM : System.Web.UI.Page
     {
         CategoriaNegocio categoriaNegocio;
+        public string mensaje;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -20,8 +21,8 @@ namespace TPFinalNivel3OnoresMatias
             }
             catch (Exception ex)
             {
-
-                throw;
+                mensaje = ex.Message;
+                ScriptManager.RegisterStartupScript(this, GetType(), "MostrarModal", "mostrarModal()", true);
             }
             
         }
@@ -41,8 +42,7 @@ namespace TPFinalNivel3OnoresMatias
             }
             catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
         }
         protected void btnAgregarCategoria_Click(object sender, EventArgs e)
@@ -58,12 +58,20 @@ namespace TPFinalNivel3OnoresMatias
                     if (id > 0)
                     {
                         ActualizarCategorias(id, categoria);
+                        mensaje = "¡Categoría agregada con éxito!";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "MostrarModal", "mostrarModal()", true);
                     }
+                }
+                else
+                {
+                    mensaje = "Ingrese un nombre para la categoria";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "MostrarModal", "mostrarModal()", true);
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                mensaje = ex.Message;
+                ScriptManager.RegisterStartupScript(this, GetType(), "MostrarModal", "mostrarModal()", true);
             }
         }
 

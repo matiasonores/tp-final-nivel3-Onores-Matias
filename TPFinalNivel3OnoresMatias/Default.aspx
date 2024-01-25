@@ -8,33 +8,48 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
 
-                    <div class="col nav-item m-1">
-                        <asp:Label ID="lblCategorias" For="ddlCategorias" runat="server" CssClass="nav-item form-label text-white" Text="Categorias"></asp:Label>
+
+                    <div class="row nav-item m-1">
+                        <div class="col-4 col-form-label">
+                            <asp:Label ID="lblCategorias" For="ddlCategorias" runat="server" CssClass="nav-item form-label text-white" Text="Categorias"></asp:Label>
+
+                        </div>
+                        <div class="col-8">
+                            <asp:DropDownList ID="ddlCategorias" CssClass="nav-item form-select" runat="server" OnSelectedIndexChanged="ddlCategorias_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+
+                        </div>
+
                     </div>
-                    <div class="col nav-item m-1">
-                        <asp:DropDownList ID="ddlCategorias" CssClass="nav-item form-select" runat="server" OnSelectedIndexChanged="ddlCategorias_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                    <div class="row nav-item m-1">
+                        <div class="input-group">
+                            <asp:TextBox ID="txtBuscar" AutoPostBack="true" runat="server" CssClass="form-control" placeholder="Buscar articulo" OnTextChanged="txtBuscar_TextChanged"></asp:TextBox>
+                            <div class="input-group-text"><i class="bi bi-search"></i></div>
+                        </div>
+
                     </div>
-                    <div class="col nav-item input-group">
-                        <asp:TextBox ID="txtBuscar" AutoPostBack="true" runat="server" CssClass="form-control" placeholder="Buscar articulo" OnTextChanged="txtBuscar_TextChanged"></asp:TextBox>
-                        <div class="input-group-text"><i class="bi bi-search"></i></div>
+
+                    <div class="row nav-item m-1">
+                        <div class="col col-form-label">
+                            <asp:Label ID="lblORdenar" For="ddlOrdenar" runat="server" CssClass="nav-item form-label text-white ml-auto" Text="Ordenar por:"></asp:Label>
+                        </div>
+                        <div class="col">
+                            <asp:DropDownList ID="ddlOrdenar" CssClass="nav-item form-select" runat="server" OnSelectedIndexChanged="ddlOrdenar_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                        </div>
+                        <div class="col">
+                            <asp:DropDownList ID="ddlCriterio" CssClass="nav-item form-select" runat="server" OnSelectedIndexChanged="ddlCriterio_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                        </div>
                     </div>
-                    <div class="col nav-item m-1">
-                        <asp:Label ID="lblORdenar" For="ddlOrdenar" runat="server" CssClass="nav-item form-label text-white ml-auto" Text="Ordenar por:"></asp:Label>
-                    </div>
-                    <div class="col nav-item m-1">
-                        <asp:DropDownList ID="ddlOrdenar" CssClass="nav-item form-select" runat="server" OnSelectedIndexChanged="ddlOrdenar_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-                    </div>
-                    <div class="col nav-item m-1">
-                        <asp:DropDownList ID="ddlCriterio" CssClass="nav-item form-select" runat="server" OnSelectedIndexChanged="ddlCriterio_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-                    </div>
+
+
                 </div>
             </nav>
             <div class="row justify-content-center">
                 <div class="col-8">
-                    <div class="mb-3 text-center">
+
+                    <div class="mb-3 text-center" style="display: none">
                         <asp:Label ID="lblTop" runat="server" CssClass="display-3 " Text="Top 3 favoritos"></asp:Label>
                     </div>
-                    <%--    Carrusel con repeater--%>
+                    <%--    Carrusel con repeater Top 3--%>
                     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" style="display: none">
                         <div class="carousel-indicators">
                             <asp:Repeater ID="RepeaterCarousel" runat="server">
@@ -65,9 +80,10 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
+                    <%--Fin del carrusel Top 3--%>
 
                     <div class="mb-3 text-center">
-                        <asp:Label ID="lblArticulos" runat="server" CssClass="display-3 " Text="Todos los articulos"></asp:Label>
+                        <asp:Label ID="lblArticulos" runat="server" CssClass="display-4" Text="Todos los articulos"></asp:Label>
 
                     </div>
 
@@ -79,15 +95,10 @@
                                     <div class="card h-100">
                                         <asp:LinkButton runat="server" ID="btnDetalles" CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloId" OnClick="btnDetalles_Click">
 
-                                <img src="Images/<%#Eval("Imagen") %>" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h6 class="card-title"><%#Eval("Nombre")%></h6>
-<%--                                    <p class="card-text text-warning"><%#Eval("Precio","{0:c}") %></p>--%>
-
-                                    <%--<asp:LinkButton CssClass="btn btn-outline-info" runat="server" ID="btnDetalles" CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloId" OnClick="btnDetalles_Click"><i class="bi bi-eye"></i></asp:LinkButton>--%>
-                                    <%--<asp:LinkButton CssClass="btn btn-outline-success" runat="server" ID="btnFavorito" CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloId" OnClick="btnFavorito_Click"><i class="bi bi-star"></i></asp:LinkButton>--%>
-                                
-                                </div>
+                                            <img src="Images/<%#Eval("Imagen") %>" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <h6 class="card-title text-center"><%#Eval("Nombre")%></h6>
+                                            </div>
                                         </asp:LinkButton>
                                     </div>
                                 </div>
@@ -95,35 +106,24 @@
                         </asp:Repeater>
                     </div>
 
-                   
+
                 </div>
 
+                <%--Inicio del toast--%>
                 <div class="toast-container position-absolute top-50 start-50 translate-middle">
-            <div class="toast" id="miToast" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                    <img src="..." class="rounded me-2" alt="...">
-                    <strong class="me-auto">Bootstrap</strong>
-                    <small>11 mins ago</small>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    <div class="toast" id="miToast" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-body">
+                            <p id="txtMensaje"><%= (this.toast)%></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="toast-body">
-                    Hello, world! This is a toast message.
-                </div>
+                <%--Fin del toast--%>
             </div>
-        </div>
-            </div>
-            
-             <%--<div aria-live="polite" aria-atomic="true" class="position-relative">--%>
-        <!-- Position it: -->
-        <!-- - `.toast-container` for spacing between toasts -->
-        <!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner -->
-        <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
-        
-    <%--</div>--%>
+
         </ContentTemplate>
     </asp:UpdatePanel>
-    
-    
+
+
 
     <script type='text/javascript'>
         function mostrarModal() {

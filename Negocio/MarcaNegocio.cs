@@ -33,6 +33,16 @@ namespace Negocio
             return id;
         }
 
+        public bool EliminarMarca(int idMarca)
+        {
+            throw new Exception("Eliminé la marca: " + idMarca);
+        }
+
+        public bool ModificarMarca(int idMarca, string descripcion)
+        {
+            throw new Exception("Modifiqué la marca: " + idMarca);
+        }
+
         public List<Marca> ObtenerMarcas()
         {
             List<Marca> marcas = new List<Marca>();

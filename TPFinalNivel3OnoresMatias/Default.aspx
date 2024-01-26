@@ -4,45 +4,39 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
 
-
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container-fluid">
-
-
-                    <div class="row nav-item m-1">
-                        <div class="col-4 col-form-label">
-                            <asp:Label ID="lblCategorias" For="ddlCategorias" runat="server" CssClass="nav-item form-label text-white" Text="Categorias"></asp:Label>
-
-                        </div>
-                        <div class="col-8">
-                            <asp:DropDownList ID="ddlCategorias" CssClass="nav-item form-select" runat="server" OnSelectedIndexChanged="ddlCategorias_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-
-                        </div>
-
-                    </div>
-                    <div class="row nav-item m-1">
-                        <div class="input-group">
-                            <asp:TextBox ID="txtBuscar" AutoPostBack="true" runat="server" CssClass="form-control" placeholder="Buscar articulo" OnTextChanged="txtBuscar_TextChanged"></asp:TextBox>
-                            <div class="input-group-text"><i class="bi bi-search"></i></div>
-                        </div>
-
-                    </div>
-
-                    <div class="row nav-item m-1">
-                        <div class="col col-form-label">
-                            <asp:Label ID="lblORdenar" For="ddlOrdenar" runat="server" CssClass="nav-item form-label text-white ml-auto" Text="Ordenar por:"></asp:Label>
-                        </div>
-                        <div class="col">
-                            <asp:DropDownList ID="ddlOrdenar" CssClass="nav-item form-select" runat="server" OnSelectedIndexChanged="ddlOrdenar_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-                        </div>
-                        <div class="col">
-                            <asp:DropDownList ID="ddlCriterio" CssClass="nav-item form-select" runat="server" OnSelectedIndexChanged="ddlCriterio_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-                        </div>
-                    </div>
-
-
+    <div class="container-fluid justify-content-center">
+        <div class="row align-items-center col-10">
+            <div class="row align-items-center col">
+            <div class="col-md-3 mb-2">
+                <asp:Label ID="lblCategorias" For="ddlCategorias" runat="server" CssClass="form-label text-white" Text="Categorías:"></asp:Label>
+            </div>
+            <div class="col-md-9 mb-2">
+                <asp:DropDownList ID="ddlCategorias" CssClass="form-select" runat="server" OnSelectedIndexChanged="ddlCategorias_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+            </div>
+        </div>
+        <div class="row align-items-center col-3">
+            <div class="col-md-10 mb-2">
+                <div class="input-group">
+                    <asp:TextBox ID="txtBuscar" AutoPostBack="true" runat="server" CssClass="form-control" placeholder="Buscar artículo" OnTextChanged="txtBuscar_TextChanged"></asp:TextBox>
+                    <div class="input-group-text"><i class="bi bi-search"></i></div>
                 </div>
-            </nav>
+            </div>
+        </div>
+        <div class="row align-items-center col">
+            <div class="col-md-2 mb-2">
+                <asp:Label ID="lblORdenar" For="ddlOrdenar" runat="server" CssClass="form-label text-white" Text="Ordenar:"></asp:Label>
+            </div>
+            <div class="col-md-5 mb-2">
+                <asp:DropDownList ID="ddlOrdenar" CssClass="form-select" runat="server" OnSelectedIndexChanged="ddlOrdenar_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+            </div>
+            <div class="col-md-5 mb-2">
+                <asp:DropDownList ID="ddlCriterio" CssClass="form-select" runat="server" OnSelectedIndexChanged="ddlCriterio_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+            </div>
+        </div>
+        </div>
+    </div>
+</nav>
             <div class="row justify-content-center">
                 <div class="col-8">
 
@@ -93,7 +87,7 @@
                             <ItemTemplate>
                                 <div class="col">
                                     <div class="card h-100">
-                                        <asp:LinkButton runat="server" ID="btnDetalles" CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloId" OnClick="btnDetalles_Click">
+                                        <asp:LinkButton CssClass="text-decoration-none text-dark" runat="server" ID="btnDetalles" CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloId" OnClick="btnDetalles_Click">
 
                                             <img src="Images/<%#Eval("Imagen") %>" class="card-img-top" alt="...">
                                             <div class="card-body">

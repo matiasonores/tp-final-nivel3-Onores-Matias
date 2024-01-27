@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +46,27 @@ namespace Negocio
             return id;
         }
 
+        public List<Usuario> ObtenerUsuarios()
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+            try
+            {
+                _db = new AccesoDB();
+                _db.SetProcedure("ObtenerUsuarios");
+                _db.EjecutarLectura();
+                while (_db.Lector.Read())
+                {
+                    Usuario usuario = CrearUsuario(_db.Lector);
+                    usuarios.Add(usuario);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return usuarios;
+        }
+
         public Usuario ObtenerUsuario(string username,  string password)
         {
             Usuario usuario = null;
@@ -58,18 +80,7 @@ namespace Negocio
 
                 if (_db.Lector.Read())
                 {
-                    usuario = new Usuario();
-                    usuario.Id = Convert.ToInt32(_db.Lector["Id"]);
-                    usuario.Email = username;
-                    usuario.Password = password;
-                    usuario.Admin = Convert.ToBoolean(_db.Lector["admin"]);
-
-                    if (!(_db.Lector["ImagenPerfil"] is DBNull))
-                        usuario.URLImagenPerfil = (string)_db.Lector["ImagenPerfil"];
-                    if (!(_db.Lector["Nombre"] is DBNull))
-                        usuario.Nombre = (string)_db.Lector["Nombre"];
-                    if (!(_db.Lector["Apellido"] is DBNull))
-                        usuario.Apellido = (string)_db.Lector["Apellido"];
+                    usuario = CrearUsuario(_db.Lector);
                 }
             }
             catch (Exception ex)
@@ -80,6 +91,31 @@ namespace Negocio
             finally
             {
                 _db.CerrarConexion();
+            }
+
+            return usuario;
+        }
+
+        private Usuario CrearUsuario(SqlDataReader lector)
+        {
+            Usuario usuario = new Usuario();
+            try
+            {
+                usuario.Id = Convert.ToInt32(_db.Lector["Id"]);
+                usuario.Email = (string)_db.Lector["email"];
+                usuario.Password = (string)_db.Lector["pass"];
+                usuario.Admin = Convert.ToBoolean(_db.Lector["admin"]);
+
+                if (!(_db.Lector["ImagenPerfil"] is DBNull))
+                    usuario.URLImagenPerfil = (string)_db.Lector["ImagenPerfil"];
+                if (!(_db.Lector["Nombre"] is DBNull))
+                    usuario.Nombre = (string)_db.Lector["Nombre"];
+                if (!(_db.Lector["Apellido"] is DBNull))
+                    usuario.Apellido = (string)_db.Lector["Apellido"];
+            }
+            catch (Exception ex )
+            {
+                throw ex;
             }
 
             return usuario;
@@ -110,6 +146,28 @@ namespace Negocio
             }
 
             return existe;
+        }
+
+        public bool EliminarUsuario(int idUser)
+        {
+            bool eliminado = false;
+            try
+            {
+                _db = new AccesoDB();
+                _db.SetProcedure("EliminarUsuario");
+                _db.SetParameter("@idUser", idUser);
+                eliminado = _db.EjecutarScalar() > 0;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
+            }
+            return eliminado;
         }
 
         public bool ModificarUsuario(Usuario usuario) 

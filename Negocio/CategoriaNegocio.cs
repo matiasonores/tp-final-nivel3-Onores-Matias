@@ -43,7 +43,7 @@ namespace Negocio
                 _db.EjecutarLectura();
                 while (_db.Lector.Read())
                 {
-                    Categoria categoria = CrearMarca(_db.Lector);
+                    Categoria categoria = CrearCategoria(_db.Lector);
                     categorias.Add(categoria);
                 }
             }
@@ -54,7 +54,7 @@ namespace Negocio
             return categorias;
         }
 
-        private Categoria CrearMarca(SqlDataReader lector)
+        private Categoria CrearCategoria(SqlDataReader lector)
         {
             Categoria categoria = new Categoria();
             try
@@ -67,6 +67,51 @@ namespace Negocio
                 throw ex;
             }
             return categoria;
+        }
+
+        public bool EliminarCategoria(int idCategoria)
+        {
+            bool eliminado = false;
+            try
+            {
+                _db = new AccesoDB();
+                _db.SetProcedure("EliminarCategoria");
+                _db.SetParameter("@id", idCategoria);
+                eliminado = _db.EjecutarScalar() > 0;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
+            }
+            return eliminado;
+        }
+
+        public bool ModificarCategoria(int idCategoria, string descripcion)
+        {
+            bool modificado = false;
+            try
+            {
+                _db = new AccesoDB();
+                _db.SetProcedure("ModificarCategoria");
+                _db.SetParameter("@id", idCategoria);
+                _db.SetParameter("@descripcion", descripcion);
+                _db.EjecutarAccion();
+                modificado = true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
+            }
+            return modificado;
         }
     }
 }

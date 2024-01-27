@@ -62,7 +62,7 @@
                         %>
                         
                         <li class="nav-item ms-auto"> <asp:LinkButton ID="btnLogout" CssClass="nav-link" OnClick="btnLogout_Click" runat="server">Log out</asp:LinkButton></li>
-                        <li class="nav-item"> <asp:LinkButton ID="btnPerfil" CssClass="nav-link" OnClick="btnPerfil_Click" runat="server">Mi perfil</asp:LinkButton></li>
+                        <li class="nav-item"> <asp:LinkButton ID="btnPerfil" CssClass="nav-link" OnClick="btnPerfil_Click" runat="server">Mi perfil (<%=(this.username) %>)</asp:LinkButton></li>
                         <%}
                             else
                             {%>
@@ -79,28 +79,25 @@
             </asp:ContentPlaceHolder>
         </div>
     </form>
-    <footer class="bg-dark text-center text-white">
+    <footer class="fixed-bottom bg-dark  text-center text-white ">
         <!-- Grid container -->
         <div class="container p-4 pb-0">
-            <!-- Section: Social media -->
             <section class="mb-4">
                 
                 <!-- Linkedin -->
-                <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/matiasonores/" role="button"><i class="bi bi-linkedin"></i></a>
-
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/matiasonores/" role="button">
+                    <i class="bi bi-linkedin"></i>
+                </a>
                 <!-- Github -->
-                <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/matiasonores" role="button"><i class="bi bi-github"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/matiasonores" role="button">
+                    <i class="bi bi-github"></i>
+                </a>
             </section>
-            <!-- Section: Social media -->
         </div>
-        <!-- Grid container -->
 
-        <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2024 Copyright:
-    <a class="text-white" href="https://github.com/matiasonores">Matias Onores</a>
+            © 2024 Copyright: <a class="text-white" href="https://github.com/matiasonores">Matias Onores</a>
         </div>
-        <!-- Copyright -->
     </footer>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>

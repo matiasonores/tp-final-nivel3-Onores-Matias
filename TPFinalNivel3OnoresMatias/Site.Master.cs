@@ -11,6 +11,7 @@ namespace TPFinalNivel3OnoresMatias
     public partial class SiteMaster : MasterPage
     {
         public bool isLoggedIn { get; set; }
+        public string username;
         protected void Page_Load(object sender, EventArgs e)
         {
             VerificarAcceso();
@@ -84,6 +85,7 @@ namespace TPFinalNivel3OnoresMatias
                 if (user != null)
                 {
                     esAdmin = user.Admin;
+                    username = user.Nombre;
 
                     if(esAdmin)
                     {

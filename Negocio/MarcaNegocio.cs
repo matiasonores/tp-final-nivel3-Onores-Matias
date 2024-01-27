@@ -35,12 +35,47 @@ namespace Negocio
 
         public bool EliminarMarca(int idMarca)
         {
-            throw new Exception("Eliminé la marca: " + idMarca);
+            bool eliminado = false;
+            try
+            {
+                _db = new AccesoDB();
+                _db.SetProcedure("EliminarMarca");
+                _db.SetParameter("@id", idMarca);
+                eliminado = _db.EjecutarScalar() > 0;
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
+            }
+            return eliminado;
         }
 
         public bool ModificarMarca(int idMarca, string descripcion)
         {
-            throw new Exception("Modifiqué la marca: " + idMarca);
+            bool modificado = false;
+            try
+            {
+                _db = new AccesoDB();
+                _db.SetProcedure("ModificarMarca");
+                _db.SetParameter("@idMarca", idMarca);
+                _db.SetParameter("@descripcion", descripcion);
+                _db.EjecutarAccion();
+                modificado = true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
+            }
+            return modificado;
         }
 
         public List<Marca> ObtenerMarcas()

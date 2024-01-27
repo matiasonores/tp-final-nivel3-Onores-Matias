@@ -9,7 +9,7 @@
 
     <%--<div class="row row-cols-1 row-cols-md-3 g-4">--%>
     <div class="row text-center justify-content-center">
-        <asp:Label ID="lblFavoritos" runat="server" CssClass="display-2" Text="Mis articulos favoritos"></asp:Label>
+        <asp:Label ID="lblFavoritos" runat="server" CssClass="display-4" Text="Mis articulos favoritos"></asp:Label>
         <div class="col-9">
                     <div class="row d-flex justify-content-center">
 

@@ -6,7 +6,7 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <div class="row justify-content-center">
-                <div class="col-6 d-flex align-items-center" style="height: 80vh">
+                <div class="col-6 d-flex align-items-center">
                     <div class="card mb-3 " style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4 d-flex align-items-center">

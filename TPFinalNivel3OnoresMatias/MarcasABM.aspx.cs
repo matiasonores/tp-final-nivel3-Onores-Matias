@@ -123,16 +123,12 @@ namespace TPFinalNivel3OnoresMatias
             return modificado;
         }
 
-        protected void dgvMarcas_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            
-        }
 
-        private void MostrarModalMarca(int v, int rowIndex)
+        private void MostrarModalMarca(int v, int id)
         {
             //Recupero el id de la marca
 
-            int id = Convert.ToInt32(dgvMarcas.DataKeys[rowIndex].Value);
+            //int id = Convert.ToInt32(dgvMarcas.DataKeys[rowIndex].Value);
             List<Marca> marcas = (List<Marca>)Session["marcas"];
             //Busco la marca
 
@@ -169,7 +165,8 @@ namespace TPFinalNivel3OnoresMatias
             try
             {
                 int rowIndex = e.RowIndex;
-                MostrarModalMarca(2, rowIndex);
+                int id = Convert.ToInt32(dgvMarcas.DataKeys[rowIndex].Value);
+                MostrarModalMarca(2, id);
             }
             catch (Exception ex)
             {
@@ -240,8 +237,8 @@ namespace TPFinalNivel3OnoresMatias
         {
             try
             {
-                int rowIndex = Convert.ToInt32(dgvMarcas.SelectedDataKey.Value);
-                MostrarModalMarca(1, rowIndex);
+                int id = Convert.ToInt32(dgvMarcas.SelectedDataKey.Value);
+                MostrarModalMarca(1, id);
             }
             catch (Exception ex)
             {

@@ -59,6 +59,6 @@
         </div>
     </div>
     <asp:Button ID="btnAceptar" CssClass="btn btn-success" runat="server" Text="Agregar" OnClick="btnAceptar_Click" />
-    <asp:Button ID="btnEliminar" CssClass="btn btn-danger" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" />
+    <asp:Button ID="btnEliminar" Visible="false" CssClass="btn btn-danger" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" />
     <asp:Button ID="btnCancelar" CssClass="btn btn-primary" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
 </asp:Content>

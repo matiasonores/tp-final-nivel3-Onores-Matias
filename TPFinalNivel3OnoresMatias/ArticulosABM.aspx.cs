@@ -45,6 +45,7 @@ namespace TPFinalNivel3OnoresMatias
                     txtPrecio.Text = articulo.Precio.ToString();
 
                     btnAceptar.Text = "Modificar";
+                    btnEliminar.Visible = true;
                 }
             }
             catch (Exception ex)
